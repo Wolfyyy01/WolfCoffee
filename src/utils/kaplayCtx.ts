@@ -5,6 +5,7 @@ const k =  kaplay(
     width: 800,
     height: 600,
     letterbox: true,
+    pixelDensity: devicePixelRatio,
     background: "#000000",
     global: true,
     touchToMouse: true,

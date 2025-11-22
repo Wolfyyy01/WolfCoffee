@@ -3,10 +3,7 @@ import k from "./utils/kaplayCtx";
 import gameScene from "./scenes/game.ts";
 import mainMenuScene from "./scenes/mainMenu.ts";
 
-
-import beat1 from "./assets/sounds/beat2.wav";
-
-loadSound("bgMusic", beat1);
+loadSound("bgMusic", "./assets/sounds/beat2.wav");
 
 play("bgMusic", { loop: true, volume: 0.1 });
 

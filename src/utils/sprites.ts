@@ -1,13 +1,7 @@
-
-import playerSprite from "../assets/player.png";
-import bgSprite from "../assets/bg.jpg";
-import shopSprite from "../assets/shop_basic.png";
-import coffeeMachine1 from "../assets/coffee_machine_1.png";
-
-loadSprite("player", playerSprite,)
-loadSprite("bg", bgSprite,)
-loadSprite("shop", shopSprite,)
-loadSprite("coffeeMachine1", coffeeMachine1,)
+loadSprite("player", "./assets/player.png",)
+loadSprite("bg", "./assets/bg.jpg",)
+loadSprite("shop", "./assets/shop_basic.png",)
+loadSprite("coffeeMachine1", "./assets/coffee_machine_1.png",)
 
 
 const player = [
@@ -31,7 +25,7 @@ const shop = [
     layer("shop")
 ]
 
-const coffeeMachine = (machineTier) => {
+const coffeeMachine = (machineTier: string) => {
     return [
         sprite(machineTier),
         pos(170, -60),

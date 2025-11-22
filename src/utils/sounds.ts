@@ -1,6 +1,4 @@
-import coinSound from "../assets/sounds/coin.wav";
-
-loadSound("coinSound", coinSound);
+loadSound("coinSound", "./assets/sounds/coin.wav");
 
 const coinSoundPlay = () => {
     play("coinSound", { volume: 0.5 });

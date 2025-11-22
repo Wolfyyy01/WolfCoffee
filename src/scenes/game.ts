@@ -13,7 +13,7 @@ export default function gameScene({ data }: { data?: { coin: number, multiplier:
     "coffeeMachine1",
   ]
 
-  let coffeeMachine;
+  let coffeeMachine: string = coffeeMachineSprites[0];
 
   const coinText = add([
     text(`Coins: ${coins}`, { font: "Consolas", size: 100 }),
@@ -45,7 +45,7 @@ export default function gameScene({ data }: { data?: { coin: number, multiplier:
     }
   });
 
-setInterval(() => {
+loop(2, () => {
     coins += multiplier;
     coinText.text = `Coins: ${coins}`;
 
@@ -59,7 +59,9 @@ setInterval(() => {
       opacity(1),
       lifespan(0.5, { fade: 0.5 })
     ]);
-  }, 2000);
+  });
+
+  
   
   onKeyPress('escape', () => {
     go("mainMenu");
