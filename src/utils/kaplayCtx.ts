@@ -2,6 +2,7 @@ import kaplay from "kaplay";
 
 const k =  kaplay(
   {
+    canvas: document.getElementById("gameCanvas") as HTMLCanvasElement,
     width: 800,
     height: 600,
     letterbox: true,
