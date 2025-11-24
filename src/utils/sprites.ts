@@ -1,6 +1,7 @@
 loadSprite("player", "./assets/player.png",)
 loadSprite("bg", "./assets/bg.jpg",)
 loadSprite("shop", "./assets/shop_basic.png",)
+loadSprite("coin", "./assets/coin.png",)
 loadSprite("coffeeMachine1", "./assets/coffee_machine_1.png",)
 
 
@@ -25,6 +26,14 @@ const shop = [
     layer("shop")
 ]
 
+const coin = [
+    sprite('coin'),
+    anchor("center"),
+    pos(40, 40),
+    scale(0.3),
+    layer("coins"),
+]
+
 const coffeeMachine = (machineTier: string) => {
     return [
         sprite(machineTier),
@@ -40,5 +49,6 @@ export {
     player as playerSprite,
     bg as bgSprite,
     shop as shopSprite,
+    coin as coinSprite,
     coffeeMachine as coffeeMachineSprite
 };

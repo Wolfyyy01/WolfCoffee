@@ -21,5 +21,10 @@ const k =  kaplay(
   }
 )
 
+document.addEventListener("mousedown", (e) => {
+  e.stopPropagation();
+}, true);
+
+
 
 export default k;

@@ -1,5 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import App from "./scenes/react/App";
+import { Provider } from "jotai";
+import { store } from "./utils/atoms";
 
 const container = document.getElementById("reactUI");
 if (!container) throw new Error('Root element "#reactUI" not found');
@@ -15,8 +18,12 @@ new ResizeObserver(() => {
   document.documentElement.style.setProperty("--scale", String(scale));
 }).observe(parent);
 
+
 ReactDOM.createRoot(container).render(
   <React.StrictMode>
-    <h1 className="text-red-700 ">Hello, React with Tauri and Kaply!</h1>
+    <Provider store={store}>
+      <App />
+    </Provider>
+    
   </React.StrictMode>
 );

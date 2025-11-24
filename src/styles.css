@@ -35,3 +35,7 @@ body {
   user-select: none;
   pointer-events: none;
 }
+
+#reactUI .game {
+  pointer-events: auto;
+}

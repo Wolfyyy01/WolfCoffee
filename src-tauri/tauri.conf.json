@@ -13,9 +13,12 @@
     "withGlobalTauri": true,
     "windows": [
       {
-        "title": "wolf-coffee",
+        "title": "Wolf Coffee",
         "width": 800,
-        "height": 600
+        "height": 600,
+        "center": true,
+        "fullscreen": false
+
       }
     ],
     "security": {

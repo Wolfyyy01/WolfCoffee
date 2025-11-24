@@ -1,9 +1,10 @@
 
-import {  saveGame } from "../utils/functiions";
+import { coinsAtom, currentSceneAtom, store } from "../utils/atoms";
+import { saveGame } from "../utils/functiions";
 import { coinSoundPlay } from "../utils/sounds";
-import { bgSprite, coffeeMachineSprite, playerSprite, shopSprite } from "../utils/sprites";
+import { bgSprite, coffeeMachineSprite, coinSprite, playerSprite, shopSprite } from "../utils/sprites";
 
-export default function gameScene({ data }: { data?: { coin: number, multiplier: number, upgrades: {coffeeMachine: number} } }) {
+export default function gameScene({ data }: { data?: { coin: number, multiplier: number, upgrades: { coffeeMachine: number } } }) {
   let coins = data?.coin || 0;
   let multiplier = data?.multiplier || 1;
   let coffee_machine_tier = data?.upgrades.coffeeMachine || 1;
@@ -15,24 +16,26 @@ export default function gameScene({ data }: { data?: { coin: number, multiplier:
 
   let coffeeMachine: string = coffeeMachineSprites[0];
 
-  const coinText = add([
-    text(`Coins: ${coins}`, { font: "Consolas", size: 100 }),
-    pos(20, 20),
-    layer("coins"),
-    scale(0.5)
-  ])
+
+  // const coinText = add([
+  //   text(` ${coins}`, { font: "Consolas", size: 100 }),
+  //   pos(60, 20),
+  //   layer("coins"),
+  //   scale(0.5)
+  // ])
 
   if (coffee_machine_tier === 1) {
-   coffeeMachine = coffeeMachineSprites[0];
+    coffeeMachine = coffeeMachineSprites[0];
   } else if (coffee_machine_tier === 2) {
-   coffeeMachine = coffeeMachineSprites[1];
-   multiplier += 1;
+    coffeeMachine = coffeeMachineSprites[1];
+    multiplier += 1;
   }
 
 
   add(bgSprite)
   add(shopSprite);
   add(playerSprite);
+  add(coinSprite)
   add(coffeeMachineSprite(coffeeMachine));
   const up = add([text("upgrade multiplier: S"), pos(600, 500), scale(0.5), layer("coins"), area(), outline(4)]);
 
@@ -40,14 +43,15 @@ export default function gameScene({ data }: { data?: { coin: number, multiplier:
     if (coins >= 10) {
       coins -= 10;
       coffee_machine_tier += 1;
-      coinText.text = `Coins: ${coins}`;
+      store.set(coinsAtom, coins);
+      multiplier += 1;
       console.log("Multiplier upgraded to " + multiplier);
     }
   });
 
-loop(2, () => {
+  loop(2, () => {
     coins += multiplier;
-    coinText.text = `Coins: ${coins}`;
+    store.set(coinsAtom, coins);
 
     coinSoundPlay();
 
@@ -61,13 +65,14 @@ loop(2, () => {
     ]);
   });
 
-  
-  
+
+
   onKeyPress('escape', () => {
-    go("mainMenu");
+    store.set(currentSceneAtom, 'mainMenu');
+
   });
 
   onKeyPress('s', async () => {
-    saveGame({ coin: coins, multiplier: multiplier, upgrades: {coffeeMachine: coffee_machine_tier} });
+    saveGame({ coin: coins, multiplier: multiplier, upgrades: { coffeeMachine: coffee_machine_tier } });
   });
 }
