@@ -1,6 +1,6 @@
 import { create, mkdir, BaseDirectory, readTextFile } from "@tauri-apps/plugin-fs"
 
-async function saveGame(data: {coin:number, multiplier:number, upgrades: {coffeeMachine: number}}) {
+async function saveGame(data: {coin:number, upgrades: {coffeeMachine: number, shop: number, player: number, productionBoost: number}}) {
     await mkdir("com.wolfy.wolf-coffee", { 
       baseDir: BaseDirectory.AppData, 
       recursive: true 

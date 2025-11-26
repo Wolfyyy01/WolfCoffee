@@ -1,18 +1,27 @@
 import { useAtom, useSetAtom } from 'jotai';
-import { currentSceneAtom, currentSceneDataAtom, isGameLoadedAtom } from '../../utils/atoms';
+import { coinsAtom, currentSceneAtom, isGameLoadedAtom, upgradesAtom } from '../../utils/atoms';
 import Button from '../../components/mainMenu/Button';
 import { loadGame } from '../../utils/functiions';
 
 const MainMenu = () => {
   const [loading] = useAtom(isGameLoadedAtom);
+  const setUpgrades = useSetAtom(upgradesAtom);
+  const setCoins = useSetAtom(coinsAtom);
   const setScene = useSetAtom(currentSceneAtom);
-  const setSceneData = useSetAtom(currentSceneDataAtom);
-  console.log(loading);
+
+
+
   const newGame = () => {
-    setSceneData({
-      coin: 0,
-      upgrades: { coffeeMachine: 1 }
+
+    setUpgrades({
+
+      coffeeMachine: 1,
+      shop: 1,
+      player: 1,
+      productionBoost: 0,
+
     });
+    setCoins(0);
     setScene("game");
 
     const canvas = document.getElementById("gameCanvas");
@@ -21,19 +30,21 @@ const MainMenu = () => {
 
   const loadGameBtn = async () => {
     const data = await loadGame();
-    setSceneData(data);
+    if (!data) return newGame();
+    setUpgrades(data.upgrades);
+    setCoins(data.coin);
     setScene("game");
 
     const canvas = document.getElementById("gameCanvas");
     if (canvas) canvas.focus();
   };
 
-  if(!loading) return null;
+  if (!loading) return null;
 
   return (
     <div className="absolute inset-0 flex flex-col items-center justify-center gap-6">
       <Button variant='empty' onClick={newGame}>
-         <div className="relative w-72 select-none">
+        <div className="relative w-72 select-none">
           <img
             src="/assets/Button.png"
             alt="Load Icon"
