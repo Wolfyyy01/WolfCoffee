@@ -3,7 +3,8 @@ import k from "./utils/kaplayCtx";
 import gameScene from "./scenes/game.ts";
 import mainMenuScene from "./scenes/mainMenu.ts";
 
-import { currentSceneAtom, currentSceneDataAtom, store } from "./utils/atoms.ts";
+import {  currentSceneAtom, store } from "./utils/atoms.ts";
+
 
 loadSound("bgMusic", "./assets/sounds/beat2.wav");
 
@@ -23,14 +24,12 @@ console.log("prev", prev);
 
 store.sub(currentSceneAtom, () => {
   const nextScene = store.get(currentSceneAtom);
-  const nextData = store.get(currentSceneDataAtom); 
   console.log("nextScene", nextScene);
   if (nextScene !== prev) {
     prev = nextScene;
-    k.go(nextScene, { data: nextData }); 
+    k.go(nextScene); 
   }
 });
-
 
 k.scene("mainMenu", mainMenuScene);
 k.scene("game", gameScene);

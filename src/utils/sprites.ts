@@ -3,6 +3,7 @@ loadSprite("bg", "./assets/bg.jpg",)
 loadSprite("shop", "./assets/shop_basic.png",)
 loadSprite("coin", "./assets/coin.png",)
 loadSprite("coffeeMachine1", "./assets/coffee_machine_1.png",)
+loadSprite("coffeeMachine2", "./assets/coffee_machine_2.png",)
 
 
 const player = [
@@ -35,6 +36,7 @@ const coin = [
 ]
 
 const coffeeMachine = (machineTier: string) => {
+    console.log(machineTier);
     return [
         sprite(machineTier),
         pos(170, -60),

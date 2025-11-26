@@ -1,7 +1,7 @@
 import { useAtom } from 'jotai';
 import { currentSceneAtom } from '../../utils/atoms';
 import MainMenu from './MainMenu';
-import Game from './game';
+import Game from './Game';
 
 const App = () => {
     const [scene] = useAtom(currentSceneAtom);
