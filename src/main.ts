@@ -14,6 +14,7 @@ k.setLayers([
   "bg",
   "shop",
   "player",
+  "coffeeMachine",
   "coins"
 ], "bg");
 

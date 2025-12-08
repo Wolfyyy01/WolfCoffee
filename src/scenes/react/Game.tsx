@@ -3,7 +3,7 @@ import { coinsAtom, upgradeMenuVisibleAtom } from "../../utils/atoms";
 import UpgradesMenu from "../../components/game/UpgradesMenu";
 
 const Game = () => {
-  const [coins, setCoins] = useAtom(coinsAtom);
+  const [coins] = useAtom(coinsAtom);
   const [UpgradesMenuVisible] = useAtom(upgradeMenuVisibleAtom);
 
 
@@ -15,10 +15,11 @@ const Game = () => {
           left: 90,
           top: 20,
         }}
+
       >
         {coins}
       </div>
-      {UpgradesMenuVisible && <UpgradesMenu coins={coins} setCoins={setCoins}/>}
+      {UpgradesMenuVisible && <UpgradesMenu />}
 
     </>
   );

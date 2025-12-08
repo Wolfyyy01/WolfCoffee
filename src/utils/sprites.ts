@@ -1,17 +1,19 @@
-loadSprite("player", "./assets/player.png",)
+loadSprite("player1", "./assets/player_1.png",)
+loadSprite("player2", "./assets/player_2.png",)
+loadSprite("player3", "./assets/player_3.png",)
 loadSprite("bg", "./assets/bg.jpg",)
-loadSprite("shop", "./assets/shop_basic.png",)
+loadSprite("shop1", "./assets/shop_basic.png",)
+loadSprite("shop2", "./assets/shop_2.png",)
+loadSprite("shop3", "./assets/shop_3.png",)
 loadSprite("coin", "./assets/coin.png",)
 loadSprite("coffeeMachine1", "./assets/coffee_machine_1.png",)
 loadSprite("coffeeMachine2", "./assets/coffee_machine_2.png",)
+loadSprite("coffeeMachine3", "./assets/coffee_machine_3.png",)
+loadSprite("coffeeMachine4", "./assets/coffee_machine_4.png",)
+loadSprite("coffeeMachine5", "./assets/coffee_machine_5.png",)
 
 
-const player = [
-    sprite('player'),
-    pos(170, -58),
-    scale(0.5),
-    layer("player")
-]
+
 
 const bg = [
     sprite('bg'),
@@ -20,12 +22,6 @@ const bg = [
     layer("bg")
 ]
 
-const shop = [
-    sprite('shop'),
-    pos(170, -50),
-    scale(1),
-    layer("shop")
-]
 
 const coin = [
     sprite('coin'),
@@ -36,14 +32,31 @@ const coin = [
 ]
 
 const coffeeMachine = (machineTier: string) => {
-    console.log(machineTier);
     return [
         sprite(machineTier),
         pos(170, -60),
         scale(0.5),
-        layer("shop")
+        layer("coffeeMachine")
     ]
 
+}
+
+const player = (tier: string) => {
+    return [
+        sprite(tier),
+        pos(170, -47),
+        scale(1),
+        layer("player")
+    ]
+}
+
+const shop = (tier: string) => {
+    return [
+        sprite(tier),
+        pos(170, -50),
+        scale(1),
+        layer("shop")
+    ]
 }
 
 

@@ -18,7 +18,6 @@ const MainMenu = () => {
       coffeeMachine: 1,
       shop: 1,
       player: 1,
-      productionBoost: 0,
 
     });
     setCoins(0);
