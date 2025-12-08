@@ -39,3 +39,8 @@ body {
 #reactUI .game {
   pointer-events: auto;
 }
+
+.upgrades-menu-container {
+    z-index: 100;
+    pointer-events: auto;
+}

@@ -13,15 +13,14 @@ export const upgradesAtom = atom({
   coffeeMachine: 1,
   shop: 1,
   player: 1,
-  productionBoost: 0,
 });
 export const multiplierAtom = atom((get) => {
   const upgrades = get(upgradesAtom);
   let m = 1;
 
-  if (upgrades.coffeeMachine >= 2) m += 1;
-  if (upgrades.coffeeMachine >= 4) m += 1;
-  if (upgrades.coffeeMachine >= 6) m += 2;
+  m += upgrades.coffeeMachine -1;
+  
+  m *= upgrades.shop;
 
   return m;
 });
